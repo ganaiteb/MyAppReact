@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Push') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'U', passwordVariable: 'P')]) {
+                withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'U', passwordVariable: 'P')]) {
                     bat "docker login -u %U% -p %P%"
                     bat "docker push %DOCKERHUB%/mern-server:latest"
                     bat "docker push %DOCKERHUB%/mern-client:latest"
